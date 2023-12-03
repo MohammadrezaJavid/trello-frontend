@@ -1,54 +1,78 @@
 <template>
-  <p>{{ wellcomeMassage }}</p>
-  
-  <br>
-  <br>
-  <router-link to="/signup">SignUp</router-link>
-  <br>
-  <router-link to="/login">Login</router-link>
-  <br>
-  <router-link to="/logout">Logout</router-link>
-  <br>
-  <br>
-  <router-link to="/trello/boards">Boards</router-link>
-  <br>
-  <router-link to="/trello/lists">Lists</router-link>
-  <br>
-  <router-link to="/trello/cards">Cards</router-link>
-  <br>
-  <br>
-  <br>
+  <v-app>
+    <notifications />
+    <!-- Start of Navigation -->
+    <nav>
+      <!-- Start of app toolbar -->
+      <v-toolbar app>
+        <v-toolbar-side-icon @click.stop="drawer = !drawer" class="hidden-md-and-up"></v-toolbar-side-icon>
+        <v-toolbar-title class="headline text-uppercase" >Trello web app</v-toolbar-title>
 
-  <router-link to="/trello/board">CreateBoard</router-link>
-  <br>
-  <router-link to="/trello/list">CreateList</router-link>
-  <br>
-  <router-link to="/trello/card">CreateCard</router-link>
-  <br>
-  <br>
-  <br>
+        <v-spacer></v-spacer>
 
-  <router-link to="/trello/delete/board">DeleteBoard</router-link>
-  <br>
-  <router-link to="/trello/delete/list">DeleteList</router-link>
-  <br>
-  <router-link to="/trello/delete/card">DeleteCard</router-link>
-  <br>
-  <div>
-    <router-view></router-view>
-  </div>
+        <v-toolbar-items class="hidden-sm-and-down">
+          <v-btn flat to="/" exact>Home</v-btn>
+          <v-btn flat to="/signup" exact>Signup</v-btn>
+          <v-btn flat to="/about">About</v-btn>
+        </v-toolbar-items>
+      </v-toolbar>
+      <!-- End of app toolbar -->
+
+      <!-- Start of mobile side menu -->
+      <v-navigation-drawer app v-model="drawer" right>
+
+        <!-- Menu title -->
+        <v-toolbar flat>
+          <v-list>
+            <v-list-tile>
+              <v-list-tile-title class="title">Menu</v-list-tile-title>
+            </v-list-tile>
+          </v-list>
+        </v-toolbar>
+        <v-divider></v-divider>
+        
+        <!-- Menu Links -->
+        <v-list>
+          <v-list-tile to="/" exact>
+            <v-list-tile-action>
+              <v-icon>home</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>Home</v-list-tile-content>
+          </v-list-tile>
+
+          <v-list-tile to="/signup" exact>
+            <v-list-tile-action>
+              <v-icon>signup</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>Signup</v-list-tile-content>
+          </v-list-tile>
+
+          <v-list-tile to="/about">
+            <v-list-tile-action>
+              <v-icon>description</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>About</v-list-tile-content>
+          </v-list-tile>
+        </v-list>
+      </v-navigation-drawer>
+      <!-- End of mobile side menu -->
+    </nav>
+    <!-- End of Navigation -->
+
+    <v-content>
+      <!-- Display view pages here based on route -->
+      <router-view></router-view>
+    </v-content>
+  </v-app>
 </template>
 
 <script>
-import { useStore } from 'vuex';
-
-export default {
-  name: "App",
-  setup() {
-    const store = useStore();
-    const wellcomeMassage = store.state.wellcomeMassage;
-
-    return { wellcomeMassage };
-  },
-};
+  export default {
+    name: "App",
+    data() {
+      return {
+        drawer: false // Hide mobile side menu by default
+      };
+    }
+  };
 </script>
