@@ -1,69 +1,17 @@
-# base
-
 ## Project setup
 
-```
-# yarn
-yarn
+``` bash
+cd trello-frontend
 
-# npm
 npm install
 
-# pnpm
-pnpm install
-
-# pnpm
-bun install
-```
-
-### Compiles and hot-reloads for development
-
-```
-# yarn
-yarn dev
-
-# npm
 npm run dev
-
-# pnpm
-pnpm dev
-
-# bun
-bun run dev
 ```
 
-### Compiles and minifies for production
+### Sign In page
 
-```
-# yarn
-yarn build
+![signin page](public/signin-page.png)
 
-# npm
-npm run build
+### Sign Up page
 
-# pnpm
-pnpm build
-
-# bun
-bun run build
-```
-
-### Lints and fixes files
-
-```
-# yarn
-yarn lint
-
-# npm
-npm run lint
-
-# pnpm
-pnpm lint
-
-# bun
-bun run lint
-```
-
-### Customize configuration
-
-See [Configuration Reference](https://vitejs.dev/config/).
+![signup page](public/signup-page.png)

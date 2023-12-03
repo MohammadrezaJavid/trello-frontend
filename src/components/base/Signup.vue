@@ -1,30 +1,69 @@
 <template>
-  <v-layout align-center justify-center>
-    <v-flex xs12 sm8 md4>
-      <v-card :width="400">
+  <v-sheet class="bg-deep-purple pa-12" rounded>
+    <v-card
+      class="mx-auto"
+      max-width="344"
+      title="User Registration"
+      color="black"
+    >
+      <v-container>
+        <v-text-field
+          v-model="form.firstname"
+          color="primary"
+          label="First name"
+          variant="underlined"
+        ></v-text-field>
 
-        <v-toolbar dark color="blue">
-          <v-toolbar-title>Signup</v-toolbar-title>
-        </v-toolbar>
-        
-        <v-card-text>
-          <v-form @submit="submitForm">
-            <v-text-field prepend-icon="person" name="firstname" label="FirstName" id="firstname" type="text" v-model="form.firstname"></v-text-field>
-            <v-text-field prepend-icon="person" name="lastname" label="LastName" id="lastname" type="text" v-model="form.lastname"></v-text-field>
-            <v-text-field prepend-icon="person" name="email" label="Email" id="email" type="email" v-model="form.email"></v-text-field>
-            <v-text-field prepend-icon="lock" name="password" label="Password" id="password" type="password" v-model="form.password"></v-text-field>
-            <v-text-field prepend-icon="lock" name="confirmpassword" label="ConfirmPassword" id="confirmpassword" type="password" v-model="form.confirmpassword"></v-text-field>
-          </v-form>
-        </v-card-text>
+        <v-text-field
+          v-model="form.lastname"
+          color="primary"
+          label="Last name"
+          variant="underlined"
+        ></v-text-field>
 
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn dark color="green" @click="submitForm">Signup</v-btn>
-        </v-card-actions>
+        <v-text-field
+          v-model="form.email"
+          color="primary"
+          label="Email"
+          variant="underlined"
+        ></v-text-field>
 
-      </v-card>
-    </v-flex>
-  </v-layout>
+        <v-text-field
+          v-model="form.password"
+          color="primary"
+          label="Password"
+          placeholder="Enter your password"
+          variant="underlined"
+        ></v-text-field>
+
+        <v-text-field
+          v-model="form.confirmpassword"
+          color="primary"
+          label="Confirm Password"
+          placeholder="Enter your Confirm Password"
+          variant="underlined"
+        ></v-text-field>
+
+        <v-checkbox
+          v-model="form.terms"
+          color="secondary"
+          label="I agree to site terms and conditions"
+        ></v-checkbox>
+      </v-container>
+
+      <v-divider></v-divider>
+
+      <v-card-actions>
+        <v-spacer></v-spacer>
+
+        <v-btn color="success" @click="submitForm">
+          Sign Up
+
+          <v-icon icon="mdi-chevron-right" end></v-icon>
+        </v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-sheet>
 </template>
 
 <script>
@@ -35,11 +74,12 @@ export default {
   data() {
     return {
       form: {
-        firstname: '',
-        lastname: '',
-        email: '',
-        password: '',
-        confirmpassword: ''
+        firstname: null,
+        lastname: null,
+        email: null,
+        password: null,
+        confirmpassword: null,
+        terms: false,
       }
     };
   },
@@ -65,61 +105,13 @@ export default {
               speed: 500,
             });
 
-            // window.location.href = '/';
+            this.$router.push({ path: '/' });
           }
         })
         .catch(error => {
-          // console.log(error.response.data.password[0]);
           console.error(error);
         });
     }
   }
 };
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <template>
-    <v-layout align-center justify-center>
-      <v-flex xs12 sm8 md4>
-        <v-card :width="400">
-
-          <v-toolbar dark color="blue">
-            <v-toolbar-title>Signup</v-toolbar-title>
-          </v-toolbar>
-          
-          <v-card-text>
-            <v-form>
-              <v-text-field prepend-icon="person" name="firstname" label="FirstName" id="firstname" type="text"></v-text-field>
-              <v-text-field prepend-icon="person" name="lastname" label="LastName" id="lastname" type="text"></v-text-field>
-              <v-text-field prepend-icon="person" name="email" label="Email" id="email" type="email"></v-text-field>
-              <v-text-field prepend-icon="lock" name="password" label="Password" id="password" type="password"></v-text-field>
-              <v-text-field prepend-icon="lock" name="confirmpassword" label="ConfirmPassword" id="confirmpassword" type="password"></v-text-field>
-            </v-form>
-          </v-card-text>
-
-          <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn dark color="green">Signup</v-btn>
-          </v-card-actions>
-
-        </v-card>
-      </v-flex>
-    </v-layout>
-</template> -->
-
