@@ -93,38 +93,19 @@ export default {
             });
 
             localStorage.setItem('jwtToken', response.data['access']);
+
+            this.$router.push({path: '/board'});
           }
         })
         .catch(error => {
+          notify({
+              title: "Unauthorized",
+              text: "Email or Password is not true!",
+              speed: 500,
+            });
           console.error(error);
         });
       },
     },
   };
 </script>
-
-<!-- <template>
-    <v-layout align-center justify-center>
-      <v-flex xs12 sm8 md4>
-        <v-card :width="400">
-
-          <v-toolbar dark color="blue">
-            <v-toolbar-title>Login</v-toolbar-title>
-          </v-toolbar>
-          
-          <v-card-text>
-            <v-form>
-              <v-text-field prepend-icon="person" name="email" label="Email" id="email" type="email" v-model="email"></v-text-field>
-              <v-text-field prepend-icon="lock" name="password" label="Password" id="password" type="password" v-model="password"></v-text-field>
-            </v-form>
-          </v-card-text>
-
-          <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn dark color="green" @click="login">Login</v-btn>
-          </v-card-actions>
-
-        </v-card>
-      </v-flex>
-    </v-layout>
-</template> -->
