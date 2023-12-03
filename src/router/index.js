@@ -22,9 +22,14 @@ const routes = [
         component: () => import('@/views/base/About.vue'),
       },
       {
-        path: '/create/board',
+        path: '/board',
+        name: 'Board',
+        component: () => import('@/components/Board.vue'),
+      },
+      {
+        path: '/cb',
         name: 'CreateBoard',
-        component: () => import('@/components/create/Board.vue'),
+        component: () => import('@/components/CreateBoard.vue'),
       },
     ],
   },
