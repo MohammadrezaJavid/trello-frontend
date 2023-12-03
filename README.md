@@ -10,8 +10,8 @@ npm run dev
 
 ### Sign In page
 
-![signin page](public/signin-page.png)
+<img src='public/signin-page.png' width='400'>
 
 ### Sign Up page
 
-![signup page](public/signup-page.png)
+<img src='public/signup-page.png' width='400'>
