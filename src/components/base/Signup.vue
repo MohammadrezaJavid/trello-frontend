@@ -109,7 +109,6 @@ export default {
           }
         })
         .catch(error => {
-          // console.log(error.response.data.password[0]);
           console.error(error);
         });
     }

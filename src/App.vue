@@ -27,7 +27,6 @@
     </nav>
 
     <v-content>
-      <!-- Display view pages here based on route -->
       <router-view></router-view>
     </v-content>
   </v-app>
@@ -38,7 +37,7 @@
     name: "App",
     data() {
       return {
-        drawer: false // Hide mobile side menu by default
+        drawer: false
       };
     }
   };
