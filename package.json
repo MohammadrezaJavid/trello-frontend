@@ -1,34 +1,31 @@
 {
-  "name": "vue-trello-project",
+  "name": "vuetify-demo",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "vite build",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "dev": "vite",
-    "format": "prettier --write src/",
-    "preview": "vite preview"
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --fix --ignore-path .gitignore"
   },
   "dependencies": {
-    "@mdi/font": "5.9.55",
+    "@kyvg/vue3-notification": "^3.0.2",
+    "@mdi/font": "7.0.96",
     "axios": "^1.6.2",
-    "firebase": "^10.6.0",
+    "core-js": "^3.29.0",
     "roboto-fontface": "*",
-    "vue": "^3.3.4",
-    "vue-router": "^4.2.5",
-    "vuetify": "^3.0.0-beta.0",
-    "vuex": "^4.0.2",
-    "webfontloader": "^1.0.0"
+    "vue": "^3.2.0",
+    "vue-router": "^4.0.0",
+    "vuetify": "^3.0.0",
+    "vuex": "^4.1.0"
   },
   "devDependencies": {
-    "@rushstack/eslint-patch": "^1.3.3",
-    "@vitejs/plugin-vue": "^4.4.0",
-    "@vue/eslint-config-prettier": "^8.0.0",
-    "eslint": "^8.49.0",
-    "eslint-plugin-vue": "^9.17.0",
-    "prettier": "^3.0.3",
-    "vite": "^4.4.11",
-    "vue-cli-plugin-vuetify": "~2.5.8",
-    "webpack-plugin-vuetify": "^2.0.0-alpha.0"
+    "@vitejs/plugin-vue": "^4.0.0",
+    "eslint": "^8.37.0",
+    "eslint-plugin-vue": "^9.3.0",
+    "sass": "^1.60.0",
+    "unplugin-fonts": "^1.0.3",
+    "vite": "^4.2.0",
+    "vite-plugin-vuetify": "^1.0.0"
   }
 }
