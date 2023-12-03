@@ -1,27 +1,55 @@
 <template>
-    <v-layout align-center justify-center>
-      <v-flex xs12 sm8 md4>
-        <v-card :width="400">
+  <v-sheet class="bg-deep-purple pa-12" rounded>
+    <v-card class="mx-auto px-6 py-8" color="black" max-width="344">
+      <v-form
+        v-model="form"
+        @submit.prevent="onSubmit"
+      >
+        <v-text-field
+          v-model="email"
+          :readonly="loading"
+          :rules="[required]"
+          class="mb-2"
+          clearable
+          label="Email"
+        ></v-text-field>
 
-          <v-toolbar dark color="blue">
-            <v-toolbar-title>Login</v-toolbar-title>
-          </v-toolbar>
-          
-          <v-card-text>
-            <v-form>
-              <v-text-field prepend-icon="person" name="email" label="Email" id="email" type="email" v-model="email"></v-text-field>
-              <v-text-field prepend-icon="lock" name="password" label="Password" id="password" type="password" v-model="password"></v-text-field>
-            </v-form>
-          </v-card-text>
+        <v-text-field
+          v-model="password"
+          :readonly="loading"
+          :rules="[required]"
+          clearable
+          label="Password"
+          placeholder="Enter your password"
+        ></v-text-field>
 
-          <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn dark color="green" @click="login">Login</v-btn>
-          </v-card-actions>
+        <br>
 
-        </v-card>
-      </v-flex>
-    </v-layout>
+        <v-btn
+          :disabled="!form"
+          :loading="loading"
+          block
+          color="success"
+          size="large"
+          type="submit"
+          variant="elevated"
+        >
+          Sign In
+        </v-btn>
+      </v-form>
+
+      <v-card-text class="text-center">
+        <a
+          class="text-blue text-decoration-none"
+          href="/signup"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Sign up now <v-icon icon="mdi-chevron-right"></v-icon>
+        </a>
+      </v-card-text>
+    </v-card>
+  </v-sheet>
 </template>
 
 <script>
@@ -29,7 +57,23 @@ import axios from 'axios';
 import { useNotification } from "@kyvg/vue3-notification";
 
 export default {
+  data: () => ({
+      form: false,
+      email: null,
+      password: null,
+      loading: false,
+  }),
+
   methods: {
+    onSubmit () {
+        if (!this.form) return
+
+        this.loading = true
+
+        setTimeout(() => (this.loading = false), 2000)
+        this.login();
+    },
+
     login() {
       const url = 'http://127.0.0.1:8000/account/login/';
       const data = {
@@ -54,64 +98,33 @@ export default {
         .catch(error => {
           console.error(error);
         });
-    },
-  },
-};
-</script>
-
-<!-- 
-<script>
-  import { mapMutations, mapGetters} from 'vuex';
-
-  export default {
-    data() {
-      return {
-        email: '',
-        password: '',
-        error: ''
-      };
-    },
-    methods: {
-      ...mapMutations(['setJwtToken']),
-
-      async login() {
-
-        try {
-          const response = await fetch('http://127.0.0.1:8000/account/login/', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              email: this.email,
-              password: this.password
-            })
-          });
-  
-          if (response.ok) {
-            this.error = '';
-            
-            const responseBody = await response.json();
-            const accessToken = responseBody.access;
-
-            
-            this.setJwtToken(accessToken);
-          } else {
-            // Failed login
-            const errorData = await response.json();
-            this.error = errorData.detail;
-          }
-        } catch (error) {
-          console.error('Login error:', error);
-          this.error = 'An error occurred during login.';
-        }
-      }
-    },
-    computed: {
-      ...mapGetters(['getJwtToken']),
-      jwtToken() {
-        return this.getJwtToken;
       },
     },
   };
-</script> -->
+</script>
+
+<!-- <template>
+    <v-layout align-center justify-center>
+      <v-flex xs12 sm8 md4>
+        <v-card :width="400">
+
+          <v-toolbar dark color="blue">
+            <v-toolbar-title>Login</v-toolbar-title>
+          </v-toolbar>
+          
+          <v-card-text>
+            <v-form>
+              <v-text-field prepend-icon="person" name="email" label="Email" id="email" type="email" v-model="email"></v-text-field>
+              <v-text-field prepend-icon="lock" name="password" label="Password" id="password" type="password" v-model="password"></v-text-field>
+            </v-form>
+          </v-card-text>
+
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn dark color="green" @click="login">Login</v-btn>
+          </v-card-actions>
+
+        </v-card>
+      </v-flex>
+    </v-layout>
+</template> -->
