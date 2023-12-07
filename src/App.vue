@@ -12,6 +12,7 @@
         <v-toolbar-items class="hidden-sm-and-down">
           <v-btn flat to="/" exact>Home</v-btn>
           <v-btn flat to="/signup" exact>Signup</v-btn>
+          <v-btn flat to="/signout" exact>Signout</v-btn>
           <v-btn flat to="/about">About</v-btn>
         </v-toolbar-items>
       </v-toolbar>
@@ -22,6 +23,7 @@
 
         <v-list-item link @click="$router.push({ path: '/' })" title="Home"></v-list-item>
         <v-list-item link @click="$router.push({ path: '/signup' })" title="Signup"></v-list-item>
+        <v-list-item link @click="$router.push({ path: '/signout' })" title="Signout"></v-list-item>
         <v-list-item link @click="$router.push({ path: '/about' })" title="About"></v-list-item>
       </v-navigation-drawer>
     </nav>

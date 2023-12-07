@@ -28,6 +28,8 @@
 import axios from 'axios';
 import CreateBoard from '@/components/CreateBoard.vue';
 
+const API_URL_BOARD_LIST = 'http://127.0.0.1:8000/trello/boards/';
+
 export default {
     components: {
         CreateBoard
@@ -41,7 +43,7 @@ export default {
     methods: {
         async getBoards() {
             try {
-              const response = await axios.get('http://127.0.0.1:8000/trello/boards/', {
+              const response = await axios.get(API_URL_BOARD_LIST, {
                 headers: {
                   Authorization: `Bearer ${localStorage.getItem('jwtToken')}`
                 }
